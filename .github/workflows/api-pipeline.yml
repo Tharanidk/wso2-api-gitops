@@ -19,8 +19,7 @@ jobs:
           sudo mv apictl /usr/local/bin/
       - name: Add WSO2 Environment
         run: |
-          apictl add-env dev \
-            --apim https://${{ secrets.WSO2_DEV_APIM }}
+          apictl add-env dev --apim https://${{ secrets.WSO2_DEV_APIM }}
       - name: Import API to Dev
         run: |
           apictl import-api -f ProductAPI/ -e dev --preserve-provider=false --update
