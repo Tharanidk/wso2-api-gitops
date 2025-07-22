@@ -21,19 +21,13 @@ jobs:
                   tar -xzf apictl-4.5.0-linux-amd64.tar.gz
                   chmod +x apictl/apictl
                   sudo mv apictl/apictl /usr/local/bin/
-            - name: Verify apictl installation
-              run: |
-                  which apictl
-            - name: Check apictl version
-              run: |
-                  apictl version
             - name: Add WSO2 Environment
               run: |
                   apictl add env dev \
                   --apim https://${{ secrets.WSO2_DEV_APIM }}
             - name: Import API to Dev
               run: |
-                  apictl import-api -f ProductAPI/ -e dev --preserve-provider=false --update
+                  apictl import api -f ProductAPI/ -e dev --preserve-provider=false --update
             - name: Run Tests (Optional)
               run: |
                   echo "Add Postman/Newman/Integration tests here"
