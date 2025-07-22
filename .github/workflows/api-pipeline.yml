@@ -1,0 +1,29 @@
+name: WSO2 API CI/CD
+on:
+  push:
+    paths:
+      - 'dev/**'
+      - '.github/workflows/**'
+    branches:
+      - main
+jobs:
+  deploy-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install apictl
+        run: |
+          wget https://github.com/wso2/apictl/releases/download/v4.5.0/apictl-linux-amd64 -O apictl
+          chmod +x apictl
+          sudo mv apictl /usr/local/bin/
+      - name: Add WSO2 Environment
+        run: |
+          apictl add-env dev \
+            --apim https://${{ secrets.WSO2_DEV_APIM }}
+      - name: Import API to Dev
+        run: |
+          apictl import-api -f ProductAPI/ -e dev --preserve-provider=false --update
+      - name: Run Tests (Optional)
+        run: |
+          echo "Add Postman/Newman/Integration tests here"
