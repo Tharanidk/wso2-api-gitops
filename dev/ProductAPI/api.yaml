@@ -1,0 +1,23 @@
+type: api
+version: v4.5.0
+data:
+  name: ProductAPI
+  context: /ProductAPI
+  version: 1.0.0
+  provider: admin
+  lifeCycleStatus: CREATED
+  isRevision: false
+  revisionId: 0
+  type: HTTP
+  transport:
+  - http
+  - https
+  policies:
+  - Unlimited
+  visibility: PUBLIC
+  endpointConfig:
+    endpoint_type: http
+    production_endpoints:
+      url: https://run.mocky.io/v3/5988d96d-16ad-4bb0-bc9c-92a57480a303
+  endpointImplementationType: ENDPOINT
+  websubSubscriptionConfiguration: null
