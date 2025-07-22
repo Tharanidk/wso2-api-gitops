@@ -18,9 +18,9 @@ jobs:
             - name: Install apictl
               run: |
                   wget https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-4.5.0-linux-amd64.tar.gz -O apictl
-                  tar -xzf apictl.tar.gz
-                  chmod +x apictl-4.5.0-linux-amd64/apictl
-                  sudo mv apictl-4.5.0-linux-amd64/apictl /usr/local/bin/
+                  tar -xzf apictl-4.5.0-linux-amd64.tar.gz
+                  chmod +x apictl
+                  sudo mv apictl /usr/local/bin/
             - name: Verify apictl installation
               run: |
                   which apictl
