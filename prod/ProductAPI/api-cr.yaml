@@ -23,11 +23,11 @@ spec:
               responses:
                 "200":
                   description: OK
-  endpointConfigurations:
-    production:
-      type: REST
-      url: https://run.mocky.io/v3/5185415ba171ea3a00704eed
-    sandbox:
-      type: REST
-      url: https://run.mocky.io/v3/5185415ba171ea3a00704eed
+  production:
+    - httpRouteRefs:
+        - prod-productapi-route
+  sandbox:
+    - httpRouteRefs:
+        - sand-productapi-route
+
   mode: privateJet
