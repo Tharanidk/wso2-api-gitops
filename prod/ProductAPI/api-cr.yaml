@@ -2,7 +2,7 @@ apiVersion: dp.wso2.com/v1alpha1
 kind: API
 metadata:
   name: product-api
-  namespace: wso2-apim
+  namespace: argocd
 spec:
   apiName: ProductAPI
   apiVersion: 1.0.0
