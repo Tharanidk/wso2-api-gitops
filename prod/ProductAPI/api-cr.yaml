@@ -1,0 +1,23 @@
+apiVersion: dp.wso2.com/v1alpha1
+kind: API
+metadata:
+  name: product-api
+  namespace: wso2-apim-argocd
+spec:
+  apiName: ProductAPI
+  apiVersion: 1.0.0
+  definition:
+    inline:
+      openAPISpec: |
+        openapi: 3.0.1
+        info:
+          title: Product API
+          version: 1.0.0
+        paths:
+          /products:
+            get:
+              summary: List products
+              responses:
+                "200":
+                  description: OK
+  mode: privateJet
