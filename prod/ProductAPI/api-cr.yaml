@@ -19,7 +19,7 @@ spec:
         paths:
           /products:
             get:
-              summary: List all available products
+              summary: List all available products// changing summary: (updated
               responses:
                 "200":
                   description: OK
