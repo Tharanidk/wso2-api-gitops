@@ -1,11 +1,18 @@
+openapi: 3.0.1
 info:
   title: Product API
   version: 1.0.0
-openapi: 3.0.1
 paths:
   /products:
     get:
+      summary: List all available products (updated)
+      parameters:
+        - name: category
+          in: query
+          description: Filter products by category
+          required: false
+          schema:
+            type: string
       responses:
         "200":
           description: OK
-      summary: List products
