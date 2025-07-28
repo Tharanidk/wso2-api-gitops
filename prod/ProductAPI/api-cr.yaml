@@ -7,7 +7,7 @@ spec:
   apiName: ProductAPI
   apiVersion: 1.0.0
   apiType: REST
-  basePath: /products
+  basePath: /products/1.0.0
   definition:
     inline:
       openAPISpec: |
