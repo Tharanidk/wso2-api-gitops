@@ -2,12 +2,13 @@ apiVersion: dp.wso2.com/v1alpha1
 kind: API
 metadata:
   name: product-api
-  namespace: argocd
+  namespace: wso2-apim
 spec:
   apiName: ProductAPI
   apiVersion: 1.0.0
   apiType: REST
   basePath: /products/1.0.0
+  organization: default
   definition:
     inline:
       openAPISpec: |
@@ -18,8 +19,12 @@ spec:
         paths:
           /products:
             get:
-              summary: List products
+              summary: List all available products
               responses:
                 "200":
                   description: OK
+  endpointConfigurations:
+    production:
+      type: REST
+      url: https://run.mocky.io/v3/5185415ba171ea3a00704eed
   mode: privateJet
