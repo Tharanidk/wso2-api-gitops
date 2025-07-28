@@ -36,31 +36,4 @@ jobs:
           apictl delete api -n ProductAPI -v 1.0.0 -e dev --insecure
           apictl import api -f dev/ProductAPI/ -e dev --preserve-provider=false --update --insecure
 
-  deploy-api-prod:
-    runs-on: ubuntu-latest
-    needs: deploy-api-dev
-    if: ${{ contains(github.event.head_commit.message, 'prod') || github.event_name == 'push' }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install apictl
-        run: |
-          wget https://github.com/wso2/product-apim-tooling/releases/download/v4.5.0/apictl-4.5.0-linux-amd64.tar.gz
-          tar -xzf apictl-4.5.0-linux-amd64.tar.gz
-          chmod +x apictl/apictl
-          sudo mv apictl/apictl /usr/local/bin/
-
-      - name: Add Prod Environment
-        run: |
-          apictl add env prod --apim https://${{ secrets.WSO2_PROD_APIM }}
-
-      - name: Login to Prod
-        run: |
-          apictl login prod -u ${{ secrets.APIM_USERNAME }} -p ${{ secrets.APIM_PASSWORD }} --insecure
-
-      - name: Import API to Prod
-        run: |
-          apictl import api -f prod/ProductAPI/ -e prod --preserve-provider=false --update --insecure
-
 
